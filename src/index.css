@@ -4,14 +4,34 @@ body {
   background-color: #f4f4f4;
 }
 
-header, footer {
+header,
+footer {
   padding: 1em;
   background-color: #333;
   color: white;
   text-align: center;
 }
 
-input, button {
+header nav {
+  margin-top: 1em;
+}
+
+header nav button {
+  margin: 0.4em;
+  padding: 0.8em;
+  background-color: #0066ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+header nav button:hover {
+  opacity: 0.9;
+}
+
+input,
+button {
   margin: 0.4em;
   padding: 0.8em;
 }
