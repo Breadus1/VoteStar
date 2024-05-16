@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import GameCard from '../components/GameCard';
+import { Link } from 'react-router-dom';
+import './VotingPanel.css';
 
 function VotingPanel() {
   const [games, setGames] = useState([]);
@@ -21,22 +22,19 @@ function VotingPanel() {
   return (
     <div>
       <h2>Vote on Your Favorite Games!</h2>
-      {games.map(game => (
-        <GameCard key={game._id} game={game} onVote={() => handleVote(game._id)} />
-      ))}
+      <div className="games-container">
+        {games.map(game => (
+          <div key={game._id} className="game-card">
+            <img src={game.imageUrl} alt={game.name} className="game-image" />
+            <h3>{game.name}</h3>
+            <Link to={`/game/${game._id}`}>
+              <button>Więcej</button>
+            </Link>
+          </div>
+        ))}
+      </div>
     </div>
   );
-}
-
-function handleVote(gameId) {
-  axios.post(`http://localhost:5000/api/games/vote/${gameId}`)
-    .then(response => {
-      alert('Thank you for voting!');
-    })
-    .catch(error => {
-      console.error('Voting failed:', error);
-      alert('Failed to submit your vote.');
-    });
 }
 
 export default VotingPanel;
