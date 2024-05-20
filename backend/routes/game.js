@@ -1,27 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const Game = require("../models/game");
-const multer = require("multer");
-const path = require("path");
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "uploads/");
-  },
-  filename: function (req, file, cb) {
-    cb(
-      null,
-      `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`
-    );
-  },
-});
-
-const upload = multer({ storage: storage });
-
-router.post("/", upload.single("image"), async (req, res) => {
+router.post("/", async (req, res) => {
   console.log("POST /api/games/");
-  const { name, website, type, releaseDate, description, company } = req.body;
-  const imageUrl = `/uploads/${req.file.filename}`;
+  const { name, website, type, releaseDate, description, imageUrl, company } =
+    req.body;
+
   try {
     const game = new Game({
       name,

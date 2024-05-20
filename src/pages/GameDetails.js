@@ -59,8 +59,8 @@ function GameDetails() {
         Visit Game Website
       </a>
       <div>
-        <p>Votes: {votes}</p> {/* Wyświetlamy liczbę głosów */}
-        <button onClick={handleVote}>Vote</button> {/* Przycisk głosowania */}
+        <p>Votes: {votes}</p>
+        <button onClick={handleVote}>Vote</button>
       </div>
     </div>
   );

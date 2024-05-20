@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./CompanyPanel.js";
 
 function CompanyPanel() {
   const [company, setCompany] = useState({
@@ -8,13 +9,14 @@ function CompanyPanel() {
     email: "",
     password: "",
   });
+
   const [game, setGame] = useState({
     name: "",
     website: "",
     type: "",
     releaseDate: "",
     description: "",
-    image: null,
+    imageUrl: "",
   });
 
   const handleCompanyChange = (e) => {
@@ -22,12 +24,8 @@ function CompanyPanel() {
   };
 
   const handleGameChange = (e) => {
-    const { name, value, files } = e.target;
-    if (name === "image") {
-      setGame({ ...game, image: files[0] });
-    } else {
-      setGame({ ...game, [name]: value });
-    }
+    const { name, value } = e.target;
+    setGame({ ...game, [name]: value });
   };
 
   const handleCompanySubmit = async (e) => {
@@ -45,13 +43,10 @@ function CompanyPanel() {
 
   const handleGameSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    Object.entries(game).forEach(([key, value]) => formData.append(key, value));
-
     try {
       const response = await axios.post(
         "http://localhost:5000/api/games",
-        formData
+        game
       );
       console.log("Game added:", response.data);
     } catch (error) {
@@ -158,11 +153,13 @@ function CompanyPanel() {
           />
         </label>
         <label>
-          Image:
+          Image URL:
           <input
-            type="file"
-            name="image"
+            type="text"
+            name="imageUrl"
+            value={game.imageUrl}
             onChange={handleGameChange}
+            placeholder="Enter image URL"
             required
           />
         </label>

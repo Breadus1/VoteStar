@@ -1,55 +1,80 @@
+.games-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1%;
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-  .games-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 1%;
-    background-color: gray;
-  }
-  
+.game-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: white;
+  width: 30%;
+  box-sizing: border-box;
+  margin: 1%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.game-card:hover {
+  transform: scale(1.05);
+}
+
+.game-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin-bottom: 16px;
+  border-radius: 8px;
+}
+
+.game-card h3 {
+  margin: 0.5em 0;
+  color: #333;
+}
+
+.game-card p {
+  color: #666;
+  margin-bottom: 16px;
+}
+
+.game-card button {
+  background-color: #0066ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.game-card button:hover {
+  background-color: #0055cc;
+}
+
+@media (max-width: 1024px) {
   .game-card {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 8px;
-    background-color: white;
-    width: 27%;
-    box-sizing: border-box;
-    margin: 1%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    width: 45%;
   }
-  
-  .game-image {
-    width: 70%;
-    height: auto;
-    object-fit: cover;
-    margin-bottom: 8px;
-  }
-  
-  .game-card h3 {
-    margin: 0.5em 0;
-  }
-  
-  .game-card button {
-    margin-top: 1em;
-  }
-  
-  @media (max-width: 1024px) {
-    .game-card {
-      width: 45%;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .game-card {
-      width: 100%;
-    }
-  }
+}
 
-  h2 {
-    justify-content: center;
-    display: flex;
+@media (max-width: 768px) {
+  .game-card {
+    width: 100%;
   }
-  
+}
+
+h2 {
+  justify-content: center;
+  display: flex;
+  margin-bottom: 20px;
+  color: #333;
+}

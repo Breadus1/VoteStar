@@ -24,16 +24,18 @@ header nav button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.2s;
 }
 
 header nav button:hover {
-  opacity: 0.9;
+  background-color: #0055cc;
 }
 
 input,
 button {
   margin: 0.4em;
   padding: 0.8em;
+  font-size: 1em;
 }
 
 button {
@@ -42,9 +44,9 @@ button {
   color: white;
   border: none;
   border-radius: 5px;
+  transition: background-color 0.2s;
 }
 
 button:hover {
-  opacity: 0.9;
+  background-color: #0055cc;
 }
-
